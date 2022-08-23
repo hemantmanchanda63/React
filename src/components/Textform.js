@@ -10,7 +10,18 @@ function Textform(props) {
   };
   const handleonchange = (event) => {
     setText(event.target.value)
-  };
+    };
+  const wordcount =() =>{
+    let words = document.getElementById("exampleFormControlTextarea1").value;
+    let count = 0;
+    let split = words.split(' ');
+    for (let i = 0; i < split.length; i++) {
+      if (split[i] != "") {
+          count += 1;
+      }
+  }
+    document.getElementById("show").innerHTML = count;
+  }
   const handlelower = () => {
     let hello = text.toLowerCase();
     setText(hello)
@@ -38,6 +49,7 @@ function Textform(props) {
             rows="8"
             value={text}
             onChange={handleonchange}
+            onInput={wordcount}
             style={{backgroundColor:props.mode==='dark'?'grey':'white' ,color:props.mode==='dark'?'white':'#000'}}
             placeholder='Enter Your Text Here'
           ></textarea>
@@ -57,7 +69,7 @@ function Textform(props) {
       </div>
       <div className="container my-3" style={{color:props.mode==='dark'?'white':'#000'}}>
         <h1>Your Text Summary</h1>
-        <p>Your Text Includes {text.split(" ").length} Words and {text.length} Characters</p>
+        <p>Your Text Includes <span id="show">0</span>  Words and {text.length} Characters</p>
         <h2>
           Preview
         </h2>
