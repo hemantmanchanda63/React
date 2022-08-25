@@ -42,22 +42,22 @@ function App() {
   };
   return (
     <div className="App">
-      <Router>
+      {/* <Router> */}
       <Navbar title="Text-Utility" mode={mode} toggle={toggle} />
       <Alert alert={alert} />
-      {/* <Textform
+      <Textform
         showalert={showalert}
         mode={mode}
         hello="Please Enter Your Text To Uppercase"
-      /> */}
-      {/* <About /> */}
+      /> 
+      {/* <About />
 
 
 
 
       {/* Routers Starts Here  */}
    
-        <Routes>
+        {/* <Routes>
           <Route exact
             path="/"
             element={
@@ -71,7 +71,7 @@ function App() {
 
           <Route exact path="/about" element={<About />} />
         </Routes>
-      </Router>
+      </Router> */}
       {/* Routers Ends Here */}
     </div>
   );
