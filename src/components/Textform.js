@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function Textform(props) {
+const Textform=(props)=> {
   const [text, setText] = useState("");
   const handleupclick = () => {
     let newtext = text.toUpperCase();
