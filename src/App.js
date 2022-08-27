@@ -42,14 +42,15 @@ function App() {
   };
   return (
     <div className="App">
+      
       <Router>
       <Navbar title="Text-Utility" mode={mode} toggle={toggle} />
-      {/* <Alert alert={alert} />
-      <Textform
+       <Alert alert={alert} />
+       {/* <Textform
         showalert={showalert}
         mode={mode}
         hello="Please Enter Your Text To Uppercase"
-      />  */}
+      />   */}
       {/* <About />
 
 
