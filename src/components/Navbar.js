@@ -11,6 +11,7 @@ function Navbar(props) {
         <Link className="navbar-brand" to="/">
           {props.title}
         </Link>
+        
         <button
           className="navbar-toggler"
           type="button"
