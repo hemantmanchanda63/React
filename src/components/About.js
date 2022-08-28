@@ -1,34 +1,23 @@
 import React, {useState} from "react";
+import PropTypes from "prop-types";
 
-export default function About() {
-  const[mystyle , setstyle]= useState({
-    backgroundColor:'white',
-    color:'black', 
-    padding:'20px',
-})
-    const[btntext, setbtntext] = useState('Enable Dark Mode')
-    const darkenable = () =>{
-        if(mystyle.color === 'black'){
-            setstyle({
-                backgroundColor:'black',
-                color:'white', 
-                padding:'20px'
-            })
-            setbtntext("Enable Light Mode")    
-        }    
-        else{
-            setstyle({
-                backgroundColor:'white',
-                color:'black',  
-            })
-            setbtntext("Enable Dark Mode")
-        }  
-    }
+export default function About(props) {
+//   const[mystyle , setstyle]= useState({
+//     backgroundColor:'white',
+//     color:'black', 
+//     padding:'20px',
+// })
+   let mystyle= {
+    color:props.mode === 'dark'?'white':'black',
+    backgroundColor:props.mode === 'dark'?'black':'white',
+    // padding:props.mode === 'dark'?'50px':'0px',
+   }
+
   return (
     <div >
-      <div className="container my-3" style={mystyle}>
+      <div className="container my-3" style={{padding:props.mode === 'dark'?'50px':'0px'}}>
         <div className="accordion " id="accordionExample">
-          <div className="accordion-item">
+          <div className="accordion-item" >
             <h2 className="accordion-header" id="headingOne" >
               <button
                 className="accordion-button"
@@ -127,7 +116,7 @@ export default function About() {
             </div>
           </div>
         </div>
-        <button onClick={darkenable} type="button" className="btn btn-primary my-3">{btntext}</button> 
+        {/* <button onClick={darkenable} type="button" className="btn btn-primary my-3">{btntext}</button>  */}
       </div>
     </div>
   );

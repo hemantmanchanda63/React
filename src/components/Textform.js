@@ -11,17 +11,17 @@ const Textform=(props)=> {
   const handleonchange = (event) => {
     setText(event.target.value)
     };
-  const wordcount =() =>{
-    let words = document.getElementById("exampleFormControlTextarea1").value;
-    let count = 0;
-    let split = words.split(' ');
-    for (let i = 0; i < split.length; i++) {
-      if (split[i] != "") {
-          count += 1;
-      }
-  }
-    document.getElementById("show").innerHTML = count;
-  }
+  // const wordcount =() =>{
+  //   let words = document.getElementById("exampleFormControlTextarea1").value;
+  //   let count = 0;
+  //   let split = words.split(' ');
+  //   for (let i = 0; i < split.length; i++) {
+  //     if (split[i] != "") {
+  //         count += 1;
+  //     }
+  // }
+  //   document.getElementById("show").innerHTML = count;
+  // }
   const handlelower = () => {
     let hello = text.toLowerCase();
     setText(hello)
@@ -33,9 +33,10 @@ const Textform=(props)=> {
     props.showalert("Text Cleared" ,"success")
   }
   const copy = () => {
-    let textarea = document.getElementById("exampleFormControlTextarea1");
-    textarea.select();
-    document.execCommand("copy");
+    // let textarea = document.getElementById("exampleFormControlTextarea1");
+    // textarea.select();
+    // document.execCommand("copy");
+    navigator.clipboard.writeText(text);
     props.showalert("Text Copied" ,"success")
   }
   return (
@@ -49,31 +50,31 @@ const Textform=(props)=> {
             rows="8"
             value={text}
             onChange={handleonchange}
-            onInput={wordcount}
-            style={{backgroundColor:props.mode==='dark'?'grey':'white' ,color:props.mode==='dark'?'white':'#000'}}
+            // {/* onInput={wordcount} */}
+            style={{backgroundColor:props.mode==='dark'?'#00000036':'white' ,color:props.mode==='dark'?'white':'#000'}}
             placeholder='Enter Your Text Here'
           ></textarea>
         </div>
-        <button onClick={handleupclick} className="btn btn-primary">
+        <button disabled={text.length===0} onClick={handleupclick} className="btn btn-primary mx-2 my-1">
           Convert to Uppercase
         </button>
-        <button onClick={handlelower} className="btn btn-primary mx-2">
+        <button disabled={text.length===0} onClick={handlelower} className="btn btn-primary mx-2 my-1">
           Convert to Lowercase
         </button>
-        <button onClick={copy} className="btn btn-primary mx-2">
+        <button disabled={text.length===0} onClick={copy} className="btn btn-primary mx-2 my-1">
           Copy Text
         </button>
-        <button onClick={handleclear} className="btn btn-primary mx-2">
+        <button disabled={text.length===0} onClick={handleclear} className="btn btn-primary mx-2 my-1">
           Clear Text
         </button>
       </div>
       <div className="container my-3" style={{color:props.mode==='dark'?'white':'#000'}}>
         <h1>Your Text Summary</h1>
-        <p>Your Text Includes <span id="show">0</span>  Words and {text.length} Characters</p>
+        <p>Your Text Includes {text.split(/\s+\n/).filter((element)=>{return element.length!==0}).length} {/* <span id="show">0</span> */}  Words and {text.length} Characters</p>
         <h2>
           Preview
         </h2>
-        <p>{text}</p>
+        <p>{text.length>0?text:"Nothing to Preview"}</p>
       </div>
     </div>
   );
